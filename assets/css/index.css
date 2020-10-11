@@ -64,6 +64,7 @@ a {
     transition: all 120ms ease-out 0s;
     display: inline-block;
     border-radius: 0.4rem;
+    margin: 10px 0px 0px 0px;
 }
 
 a:hover {
