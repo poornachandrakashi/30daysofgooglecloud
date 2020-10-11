@@ -5,10 +5,10 @@ import time
 from bs4 import BeautifulSoup
 import fileinput
 import json
+import time
+import concurrent.futures
 
 biglist=[]
-id = 1
-quest = 0
 url =[]
 url2 =[]
 
@@ -31,36 +31,24 @@ track2 = [
     ]
 #get the url in list
 
+def data_scraping (url):
+    #print("in data scraping")
+    with fileinput.input(files=('userurl.txt')) as f:
+        for line in f:
+            url.append(line.replace("\n", ""))
+    for ele in url:
+        if ele.strip():
+            url2.append(ele)
+    start_thread(url2)
 
-with fileinput.input(files=('userurl.txt')) as f:
-    for line in f:
-        url.append(line.replace("\n", ""))
-for ele in url:
-    if ele.strip():
-        url2.append(ele)
     # Connect to the URL
 
-for link in url2:
+def data_gathering(link):
+    #t3 = time.time()
+    #print("data gathering")
     tempdic = {}
     response = requests.get(link)
-    # Parse HTML and save to BeautifulSoup object
     soup = BeautifulSoup(response.text, "html.parser")
-    #print(soup.prettify())
-
-    """
-    title = soup.find('title')
-    x = title.string.split(" |")
-    #print(x[0])
-    bigdic[id]['name'] = x[0]
-    x=soup.find_all("p", "public-profile__hero__details l-mbm")
-    y = x[0]
-    z = ""
-    for element in y:
-        z += element
-    tlabno = z.split("\n")
-    bigdic[id]['noofquest'] = tlabno[4]
-    """
-
     track1completed = []
     track2completed = []
     profile = soup.findAll('div', attrs = {'class':'public-profile__hero'})[0]
@@ -79,23 +67,62 @@ for link in url2:
     tempdic['track1'] = track1completed
     tempdic['track2'] = track2completed
     tempdic['qcomplete_no'] = len(track1completed) + len(track2completed)
-    print(id," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
-    id+=1
     biglist.append(tempdic)
+    #print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
 
-print(biglist)
+    #t4 = time.time()
+    #print(f"{t4-t3} seconds to download this profile.")
 
-#print("The original dictionary : " + str(biglist))
-print("\n")
 
-res = sorted(biglist, key = lambda x: x['qcomplete_no'], reverse=True)
-#print("The sorted dictionary by marks is : " + str(res))
 
-with open('finallist.txt', 'w') as f:
-    print(biglist, file=f)
-with open('sortedfinallist.txt', 'w') as f:
-    print(res, file=f)
-with open("my.json","w") as f:
-    json.dump(res,f)
 
-f.close()
+
+def data_saving (biglist):
+    #print("in data saving")
+    #print(biglist)
+    #print("The original dictionary : " + str(biglist))
+    #print("\n")
+    res = sorted(biglist, key = lambda x: x['qcomplete_no'], reverse=True)
+    #print("The sorted dictionary by marks is : " + str(res))
+    #with open('finallist.txt', 'w') as f:
+    #    print(biglist, file=f)
+    #with open('sortedfinallist.txt', 'w') as f:
+    #    print(res, file=f)
+    with open("my.json","w") as f:
+        json.dump(res,f)
+    f.close()
+
+
+
+
+def start_thread(url2):
+    """
+    print("start thread")
+    id = 0
+    for link in url2:
+        print("start thread loop")
+        data_gathering(link)
+        id+=1
+    print("start thread loop ended")
+    data_saving(biglist)
+    """
+    threads = 999999
+    #print("in start thread")
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
+        executor.map(data_gathering, url2)
+    data_saving (biglist)
+
+
+
+
+def main(url):
+    #print("in main")
+    data_scraping (url)
+
+
+
+t0 = time.time()
+main(url)
+t1 = time.time()
+print(f"{t1-t0} seconds to download {len(url2)} profile.")
