@@ -23,6 +23,13 @@ body {
   background: black;
   color:white;
 }
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.header-subtitle{
+   text-align:center;
+}
 html,
 body {
     width: 100%;
@@ -58,6 +65,7 @@ body {
     background-position: 100% 50%;
   }
 }
+
 
 
 a {
