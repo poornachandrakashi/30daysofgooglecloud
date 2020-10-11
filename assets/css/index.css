@@ -219,7 +219,7 @@ select {
 
 .c-list__grid {
     display: grid;
-    grid-template-columns: 4.8rem 3fr 1fr;
+    grid-template-columns: 4.8rem 8fr 1fr;
     grid-column-gap: 2.4rem;
 }
 
