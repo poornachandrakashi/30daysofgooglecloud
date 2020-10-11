@@ -25,7 +25,7 @@ body {
 }
 
 
-div,ul,body::-webkit-scrollbar {
+div,body::-webkit-scrollbar {
   display: none;
 }
 .header-subtitle{
