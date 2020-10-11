@@ -23,11 +23,10 @@ body {
   background: black;
   color:white;
 }
-
-
-div,body::-webkit-scrollbar {
+html::-webkit-scrollbar {
   display: none;
 }
+
 .header-subtitle{
    text-align:center;
 }
@@ -97,7 +96,7 @@ u-text--center{
     width: 100%;
     max-width: 960px;
     margin: auto;
-
+    
 }
 
 .l-grid {
