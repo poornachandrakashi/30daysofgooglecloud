@@ -26,12 +26,13 @@ function getData() {
                             <img class="c-avatar c-media__img" src="${member.dp}" />
                             <div class="c-media__content">
                                 <div class="c-media__title">${member.name}</div>
-                                <a class="c-media__link u-text--small">${member.quests}</a>
+                                <a class="c-media__link u-text--small">Track 1${member.track1}</a>
+                                <a class="c-media__link u-text--small">Track 2${member.track2}</a>
                             </div>
                         </div>
                         <div class="u-text--right c-kudos">
                             <div class="u-mt--8">
-                                <strong>${member.quests_status}</strong>
+                                <strong>${member.qcomplete_no}</strong>
                             </div>
                         </div>
                     </div>
