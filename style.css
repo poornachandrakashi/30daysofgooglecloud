@@ -1,0 +1,80 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --darkest: #101010;
+    --darker: #16171A;
+    --dark: #A3AFBF;
+    --medium: #DFE7EF;
+    --light: #CAD4E1;
+    --lighter: #F5F8FC;
+    --lightest: var(--white);
+    --primary: #7B16FF;
+    --primary-light: #DDD9FF;
+    --primary-trans: rgba(123, 22, 255, 0.4);
+    --yellow: #FDCB6E;
+    --orange: #E17055;
+    --teal: #00CEC9;
+    --bg: var(--darkest);
+    --color: var(--lightest);
+    --surface: var(--darker);
+}
+
+body {
+  background: #151414;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+      overflow-x: hidden;
+}
+
+.top-heading{
+  border: 10px double rgba(255, 255, 255, 0.25);
+  border-width: 0px 0px 4px 0px ;
+  padding-bottom: 10px;
+}
+.top-heading span {
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+  background: url(animated_text_fill.png) ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: slide 80s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+}
+@-webkit-keyframes slide {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    -webkit-transition: all 120ms ease-out 0s;
+    transition: all 120ms ease-out 0s;
+    display: inline-block;
+    border-radius: 0.4rem;
+    margin: 10px 0px 0px 0px;
+}
+
+a:hover {
+    background: var(--primary-trans);
+    color: var(--primary-light);
+    box-shadow: 0px 0px 0px 0.4rem var(--primary-trans);
+}
