@@ -117,7 +117,7 @@ u-text--center{
 
 @media screen and (max-width: 1000px){
   .top-heading{
-    font-size: 40px;
+    font-size: 12px;
   }
 }
 @media screen and (max-width: 700px) {
