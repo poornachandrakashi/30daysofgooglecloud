@@ -107,6 +107,12 @@ u-text--center{
     position: relative;
 }
 
+@media screen and (max-width: 1000px){
+  .top-heading{
+    font-size: 15px;
+  }
+}
+
 @media screen and (max-width: 700px) {
     .l-grid {
         grid-template-columns: 1fr;
