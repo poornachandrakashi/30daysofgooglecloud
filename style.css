@@ -96,7 +96,7 @@ u-text--center{
     width: 100%;
     max-width: 960px;
     margin: auto;
-    
+
 }
 
 .l-grid {
@@ -125,7 +125,7 @@ u-text--center{
     font-size: 10px;
   }
 }
-@media screen and (max-width: 540px){
+@media screen and (max-width: 640px){
   .top-heading{
     font-size: 8px;
   }
