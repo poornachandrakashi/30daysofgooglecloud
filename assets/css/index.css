@@ -99,7 +99,7 @@ select {
 
 .l-wrapper {
     width: 100%;
-    max-width: 960px;
+    overflow-x: hidden;
     margin: auto;
     padding: 1.6rem 1.6rem 3.2rem;
 }
@@ -189,7 +189,7 @@ select {
 .c-logo {
     display: inline-block;
     width: 100%;
-    max-width: 17.6rem;
+    max-width: 500px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
