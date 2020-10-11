@@ -115,11 +115,22 @@ u-text--center{
 
 
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 900px){
   .top-heading{
     font-size: 12px;
   }
 }
+@media screen and (max-width: 700px){
+  .top-heading{
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 540px){
+  .top-heading{
+    font-size: 8px;
+  }
+}
+
 @media screen and (max-width: 700px) {
     .l-grid {
         grid-template-columns: 1fr;
