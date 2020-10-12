@@ -21,7 +21,7 @@ function getData() {
                 newRow.classList = 'c-list__item';
                 newRow.innerHTML = `
                     <div class="c-list__grid">
-                        <div class="c-flag c-place u-bg--transparent">${i}</div>
+                        <div class=" c-place ">${i}</div>
                         <div class="c-media">
                             <img class="c-avatar c-media__img" src="${member.dp}" />
                             <div class="c-media__content">
@@ -39,7 +39,7 @@ function getData() {
                         </div>
                     </div>
                 `;
-                
+
                 i++;
                 list.appendChild(newRow);
             });
