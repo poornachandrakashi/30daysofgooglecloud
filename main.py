@@ -73,8 +73,6 @@ def data_gathering(link):
     #print(f"{t4-t3} seconds to download this profile.")
 
 
-#https://www.homedepot.com/b/Furniture-Bedroom-Furniture-Nightstands/N-5yc1vZceum?Nao=48
-#https://www.homedepot.com/b/Furniture-Bedroom-Furniture-Nightstands/N-5yc1vZceum?Nao=96
 
 
 def data_saving (biglist):
