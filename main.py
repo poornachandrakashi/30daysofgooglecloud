@@ -22,12 +22,11 @@ track1=[
     ]
 track2 = [
     'Getting Started: Create and Manage Cloud Resources',
-    'Integrate with Machine Learning APIs',
     'Perform Foundational Data, ML, and AI Tasks in Google Cloud',
-    'Explore Machine Learning Models with Explainable AI',
-    'Engineer Data in Google Cloud',
     'Insights from Data with BigQuery',
-    'Google Cloud Essentials'
+    'Engineer Data in Google Cloud',
+    'Integrate with Machine Learning APIs',
+    'Explore Machine Learning Models with Explainable AI'
     ]
 #get the url in list
 
@@ -68,13 +67,14 @@ def data_gathering(link):
     tempdic['track2'] = track2completed
     tempdic['qcomplete_no'] = len(track1completed) + len(track2completed)
     biglist.append(tempdic)
-    print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
+    #print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
 
     #t4 = time.time()
     #print(f"{t4-t3} seconds to download this profile.")
 
 
-
+#https://www.homedepot.com/b/Furniture-Bedroom-Furniture-Nightstands/N-5yc1vZceum?Nao=48
+#https://www.homedepot.com/b/Furniture-Bedroom-Furniture-Nightstands/N-5yc1vZceum?Nao=96
 
 
 def data_saving (biglist):
@@ -84,10 +84,10 @@ def data_saving (biglist):
     #print("\n")
     res = sorted(biglist, key = lambda x: x['qcomplete_no'], reverse=True)
     #print("The sorted dictionary by marks is : " + str(res))
-    #with open('finallist.txt', 'w') as f:
-    #    print(biglist, file=f)
-    #with open('sortedfinallist.txt', 'w') as f:
-    #    print(res, file=f)
+    with open('finallist.txt', 'w') as f:
+        print(biglist, file=f)
+    with open('sortedfinallist.txt', 'w') as f:
+        print(res, file=f)
     with open("my.json","w") as f:
         json.dump(res,f)
     f.close()
