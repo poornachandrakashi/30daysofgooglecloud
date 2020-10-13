@@ -66,8 +66,10 @@ def data_gathering(link):
     tempdic['track1'] = track1completed
     tempdic['track2'] = track2completed
     tempdic['qcomplete_no'] = len(track1completed) + len(track2completed)
-    biglist.append(tempdic)
+
     print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
+    biglist.append(tempdic)
+    data_saving(biglist)
 
     #t4 = time.time()
     #print(f"{t4-t3} seconds to download this profile.")
@@ -104,7 +106,7 @@ def start_thread(url2):
     print("start thread loop ended")
     data_saving(biglist)
     """
-    threads = 999999
+    threads = 10
     #print("in start thread")
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
