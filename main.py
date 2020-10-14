@@ -43,7 +43,7 @@ def data_scraping (url):
     # Connect to the URL
 
 def data_gathering(link):
-    #t3 = time.time()
+    t3 = time.time()
     #print("data gathering")
     tempdic = {}
     response = requests.get(link)
@@ -55,8 +55,46 @@ def data_gathering(link):
     name = profile.h1.text
     tempdic['name'] = name.strip()
     tempdic['dp'] = dp
-    tempdic['qlabid'] = link
-    quests = soup.findAll('div', attrs = {'class':'public-profile__badges'})
+    #tempdic['qlabid'] = link
+    quests = soup.findAll('ql-badge')
+    for quest in quests:
+        allquest = json.loads(quest.get('badge'))['title']
+        #print(allquest)
+        if allquest in track1:
+            track1completed.append(allquest)
+        if allquest in track2:
+            track2completed.append(allquest)
+    tempdic['track1'] = track1completed
+    tempdic['track2'] = track2completed
+    tempdic['qcomplete_no'] = len(track1completed) + len(track2completed)
+    #print(tempdic['qcomplete_no'])
+    print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
+    biglist.append(tempdic)
+    t4 = time.time()
+    print(f"{t4-t3} seconds to download this profile.")
+    #print("data saved")
+
+
+    """
+    badge = soup.find_all('ql-badge').attrs
+    print(badge)
+    qname = badge['badge'].split(',')
+    qname2 =  qname[1].split(":")
+    print(qname2)
+    """
+
+    """
+    list = []
+    for row in quests[0].findAll('ql-badge'):
+        list.append(str(row))
+        print(list)
+        for element in list :
+            print(element)
+            point = element.split('=')
+            print(point[1])
+    """
+
+    """
     for row in quests[0].findAll('div', attrs = {'class':'public-profile__badge'}):
         divs = row.findChildren("div" , recursive=False)
         if divs[1].text.strip() in track1:
@@ -66,19 +104,25 @@ def data_gathering(link):
     tempdic['track1'] = track1completed
     tempdic['track2'] = track2completed
     tempdic['qcomplete_no'] = len(track1completed) + len(track2completed)
-
+    print(temdic['qcomplete_no'])
     print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
+    #if tempdic['qcomplete_no']!=0:
     biglist.append(tempdic)
-    data_saving(biglist)
+    print("data saved")
+    #else:
+    #    print("data not saved")
 
-    #t4 = time.time()
-    #print(f"{t4-t3} seconds to download this profile.")
+
+
+    t4 = time.time()
+    print(f"{t4-t3} seconds to download this profile.")
+    """
 
 
 
 
 def data_saving (biglist):
-    #print("in data saving")
+    print("in data saving")
     #print(biglist)
     #print("The original dictionary : " + str(biglist))
     #print("\n")
@@ -116,6 +160,7 @@ def start_thread(url2):
 
 
 
+
 def main(url):
     #print("in main")
     data_scraping (url)
@@ -124,5 +169,6 @@ def main(url):
 
 t0 = time.time()
 main(url)
+
 t1 = time.time()
 print(f"{t1-t0} seconds to download {len(url2)} profile.")
