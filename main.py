@@ -43,7 +43,7 @@ def data_scraping (url):
     # Connect to the URL
 
 def data_gathering(link):
-    t3 = time.time()
+    #t3 = time.time()
     #print("data gathering")
     tempdic = {}
     response = requests.get(link)
@@ -68,10 +68,15 @@ def data_gathering(link):
     tempdic['track2'] = track2completed
     tempdic['qcomplete_no'] = len(track1completed) + len(track2completed)
     #print(tempdic['qcomplete_no'])
-    print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
-    biglist.append(tempdic)
-    t4 = time.time()
-    print(f"{t4-t3} seconds to download this profile.")
+
+    if tempdic['qcomplete_no']!=0:
+        print(len(biglist)," ",tempdic['name']," ",tempdic['qcomplete_no']," ",tempdic['track1']," ",tempdic['track2'])
+        biglist.append(tempdic)
+        print("data saved")
+    else:
+        print("no badges")
+    #t4 = time.time()
+    #print(f"{t4-t3} seconds to download this profile.")
     #print("data saved")
 
 
@@ -111,9 +116,6 @@ def data_gathering(link):
     print("data saved")
     #else:
     #    print("data not saved")
-
-
-
     t4 = time.time()
     print(f"{t4-t3} seconds to download this profile.")
     """
@@ -150,7 +152,7 @@ def start_thread(url2):
     print("start thread loop ended")
     data_saving(biglist)
     """
-    threads = 10
+    threads = 1
     #print("in start thread")
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
@@ -169,6 +171,5 @@ def main(url):
 
 t0 = time.time()
 main(url)
-
 t1 = time.time()
 print(f"{t1-t0} seconds to download {len(url2)} profile.")
