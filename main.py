@@ -152,7 +152,7 @@ def start_thread(url2):
     print("start thread loop ended")
     data_saving(biglist)
     """
-    threads = 1
+    threads = 10
     #print("in start thread")
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
