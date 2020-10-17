@@ -24,13 +24,6 @@ jobs:
 
       - name: Install Requirements
         run: pip install -r requirements.txt
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1
-        with:
-         path: ./script/userurl.txt
-      - name: Echo package.json
-        run: echo ${{ steps.package.outputs.content }}
 
       - name: Execute Python script
         run: |
