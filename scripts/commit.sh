@@ -1,8 +1,6 @@
 #!/bin/bash
-touch initial
-git add initial
-git commit -m "initial commit"
-git push -u origin master
-git add .
-git commit -m "Updated Repository data"
-git push origin master
+git config --global user.name "github-actions[bot]"
+git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+git add -A
+git commit -m "Update test.txt"
+git push
