@@ -76,7 +76,8 @@ def start_thread(url2):
 
 def main(url):
     data_scraping (url)
-
+    
+if __name__ == '__main__':
 t0 = time.time()
 main(url)
 t1 = time.time()
