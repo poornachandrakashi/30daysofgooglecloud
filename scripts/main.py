@@ -78,8 +78,8 @@ def main(url):
     data_scraping (url)
     
 if __name__ == '__main__':
-t0 = time.time()
-main(url)
-t1 = time.time()
-print(f"{t1-t0} seconds to download {len(url2)} profile.")
-print("number of people started",len(biglist))
+    #t0 = time.time()
+    main(url)
+    #t1 = time.time()
+    #print(f"{t1-t0} seconds to download {len(url2)} profile.")
+    #print("number of people started",len(biglist))
