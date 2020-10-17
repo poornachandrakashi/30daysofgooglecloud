@@ -36,5 +36,6 @@ jobs:
 
       - name: commit changes
         run: |
-          chmod +x ./scripts/commit.sh
-          ./scripts/commit.sh
+           git add .
+           git commit -m "Updated Repository data"
+           git push origin master
