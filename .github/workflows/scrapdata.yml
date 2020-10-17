@@ -24,13 +24,6 @@ jobs:
 
       - name: Install Requirements
         run: pip install -r requirements.txt
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1
-        with:
-         path: ./script/userurl.txt
-      - name: Echo package.json
-        run: echo ${{ steps.package.outputs.content }}
 
       - name: Execute Python script
         run: |
@@ -38,8 +31,8 @@ jobs:
 
       - name: setup git config
         run: |
-          git config user.name ${{ secrets.USERNAME }}
-          git config user.email ${{ secrets.EMAIL }}
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
 
       - name: commit changes
         run: |
