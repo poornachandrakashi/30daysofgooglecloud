@@ -136,7 +136,7 @@ def data_saving (biglist):
         print(biglist, file=f)
     with open('sortedfinallist.txt', 'w') as f:
         print(res, file=f)
-    with open(save_path,"w") as f:
+    with open("my.json","w") as f:
         json.dump(res,f)
     f.close()
 
