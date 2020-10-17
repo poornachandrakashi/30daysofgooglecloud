@@ -61,7 +61,7 @@ def data_saving (biglist):
     with open("my.json","w") as f:
         json.dump(res,f)
     f.close()
-    print(my.json)
+    print(res)
 
 def start_thread(url2):
     threads = 10
